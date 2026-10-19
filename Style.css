@@ -1,0 +1,399 @@
+
+/* 1. Reset mặc định */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 85px;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    color: #172033;
+    line-height: 1.7;
+    background: #ffffff;
+}
+
+img {
+    display: block;
+    max-width: 100%;
+}
+
+a {
+    text-decoration: none;
+}
+
+/* 2. Header với ảnh nền và hiệu ứng blur */
+.header {
+    min-height: 430px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    padding: 100px 20px 60px;
+    text-align: center;
+    color: white;
+    background:
+        url("https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1800&q=85")
+        center / cover no-repeat;
+}
+
+.header::before {
+    content: "";
+    position: absolute;
+    inset: -10px;
+    background: inherit;
+    filter: blur(5px);
+    transform: scale(1.03);
+}
+
+.header::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        135deg,
+        rgba(9, 20, 45, 0.82),
+        rgba(15, 48, 78, 0.65)
+    );
+}
+
+.header-content {
+    position: relative;
+    z-index: 2;
+    max-width: 800px;
+}
+
+.tagline,
+.eyebrow {
+    display: inline-block;
+    color: #0d9488;
+    font-size: 12px;
+    font-weight: bold;
+    letter-spacing: 3px;
+    margin-bottom: 12px;
+}
+
+.header .tagline {
+    color: #99f6e4;
+}
+
+.header h1 {
+    font-size: clamp(36px, 6vw, 60px);
+    line-height: 1.2;
+    margin-bottom: 18px;
+}
+
+.header p {
+    font-size: clamp(16px, 2.5vw, 20px);
+    margin-bottom: 30px;
+    color: #e2e8f0;
+}
+
+/* 3. Button */
+.btn {
+    display: inline-block;
+    background: #0d9488;
+    color: white;
+    padding: 12px 24px;
+    border-radius: 7px;
+    font-weight: bold;
+    transition: background 0.3s, transform 0.3s;
+}
+
+.btn:hover {
+    background: #0f766e;
+    transform: translateY(-3px);
+}
+
+/* 4. Navigation cố định khi cuộn */
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 15px 7%;
+    background: rgba(15, 23, 42, 0.97);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+}
+
+.brand {
+    color: white;
+    font-size: 23px;
+    font-weight: bold;
+    white-space: nowrap;
+}
+
+.brand span {
+    color: #5eead4;
+}
+
+.navbar ul {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 8px;
+    list-style: none;
+}
+
+.navbar ul a {
+    display: block;
+    color: #e2e8f0;
+    padding: 8px 12px;
+    border-radius: 5px;
+    transition: background 0.3s, color 0.3s;
+}
+
+.navbar ul a:hover {
+    color: white;
+    background: #0d9488;
+}
+
+/* 5. Khu vực dịch vụ */
+.content {
+    padding: 80px 7%;
+    background: #f8fafc;
+}
+
+.section-heading {
+    max-width: 700px;
+    margin: 0 auto 40px;
+    text-align: center;
+}
+
+.section-heading h2,
+.about h2,
+.contact h2 {
+    font-size: clamp(28px, 4vw, 40px);
+    line-height: 1.3;
+    margin-bottom: 15px;
+}
+
+.section-heading p,
+.contact p {
+    color: #64748b;
+}
+
+/* 6. Card layout sử dụng CSS Grid */
+.card-container {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 28px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.card {
+    overflow: hidden;
+    background: white;
+    border-radius: 14px;
+    box-shadow: 0 5px 24px rgba(15, 23, 42, 0.07);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 16px 32px rgba(15, 23, 42, 0.14);
+}
+
+.card img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    transition: transform 0.4s;
+}
+
+.card:hover img {
+    transform: scale(1.04);
+}
+
+.card-body {
+    padding: 25px;
+}
+
+.card-number {
+    color: #0d9488;
+    font-size: 11px;
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+
+.card h3 {
+    font-size: 21px;
+    margin: 10px 0;
+}
+
+.card p {
+    color: #64748b;
+    margin-bottom: 18px;
+}
+
+.card-link {
+    color: #0d9488;
+    font-weight: bold;
+}
+
+.card-link:hover {
+    color: #115e59;
+}
+
+/* 7. Giới thiệu */
+.about {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    gap: 60px;
+    padding: 90px 8%;
+    max-width: 1400px;
+    margin: auto;
+}
+
+.about-content p {
+    color: #64748b;
+    margin-bottom: 20px;
+}
+
+.about-list {
+    list-style: none;
+    margin-bottom: 25px;
+}
+
+.about-list li {
+    margin-bottom: 8px;
+    font-weight: 500;
+}
+
+.about-image img {
+    width: 100%;
+    height: 380px;
+    object-fit: cover;
+    border-radius: 18px;
+}
+
+/* 8. Liên hệ */
+.contact {
+    padding: 75px 20px;
+    text-align: center;
+    background: #ecfeff;
+}
+
+.contact p {
+    max-width: 650px;
+    margin: 0 auto 25px;
+}
+
+/* 9. Footer gồm 2 cột */
+.footer {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    padding: 45px 8%;
+    background: #0f172a;
+    color: #cbd5e1;
+}
+
+.footer-left .brand {
+    display: inline-block;
+    margin-bottom: 12px;
+}
+
+.footer-left p {
+    font-size: 14px;
+}
+
+.footer-right h3 {
+    color: white;
+    margin-bottom: 12px;
+}
+
+.footer-right ul {
+    list-style: none;
+}
+
+.footer-right li {
+    margin-bottom: 5px;
+}
+
+.footer-right a {
+    color: #cbd5e1;
+    transition: color 0.3s;
+}
+
+.footer-right a:hover {
+    color: #5eead4;
+}
+
+/* 10. Responsive cho máy tính bảng */
+@media (max-width: 900px) {
+    .navbar {
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .card-container {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .about {
+        gap: 30px;
+        padding: 65px 6%;
+    }
+}
+
+/* 11. Responsive cho điện thoại */
+@media (max-width: 600px) {
+    .header {
+        min-height: 380px;
+        padding: 100px 20px 45px;
+    }
+
+    .navbar {
+        padding: 15px 4%;
+    }
+
+    .navbar ul {
+        gap: 3px;
+    }
+
+    .navbar ul a {
+        padding: 7px;
+        font-size: 14px;
+    }
+
+    .content {
+        padding: 55px 5%;
+    }
+
+    .card-container {
+        grid-template-columns: 1fr;
+        gap: 22px;
+    }
+
+    .card img {
+        height: 230px;
+    }
+
+    .about {
+        grid-template-columns: 1fr;
+        padding: 60px 6%;
+    }
+
+    .about-image img {
+        height: 260px;
+    }
+
+    .footer {
+        grid-template-columns: 1fr;
+        gap: 25px;
+        padding: 35px 7%;
+    }
+}
